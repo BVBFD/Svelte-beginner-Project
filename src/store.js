@@ -1,9 +1,9 @@
 // basic svelte practice
-import { writable } from 'svelte/store';
+// import { writable } from 'svelte/store';
 
-let count = writable(0);
+// let count = writable(0);
 
-count.subscribe((value) => console.log(value));
+// count.subscribe((value) => console.log(value));
 
-export { count };
+// export { count };
 // basic svelte practice
