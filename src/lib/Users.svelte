@@ -1,6 +1,7 @@
 <script>
   import User from './User.svelte';
   import FilterUser from './FilterUser.svelte';
+  import NewUser from './NewUser.svelte';
 
   let users = [
     {
@@ -26,9 +27,11 @@
     },
   ];
 
-  let filteredUsers = users;
+  $: filteredUsers = users;
+  // $ reactive variable
 
   const filter = (e) => {
+    console.log(e.detail);
     if (e.detail === 'null') {
       filteredUsers = users;
       return;
@@ -38,15 +41,23 @@
       return user.active === status;
     });
   };
+
+  const remove = ({ detail }) => {
+    users = users.filter((user) => user.id !== detail);
+  };
 </script>
 
 <div>
   <h1 class="text-2xl text-center mt-10">List of Users</h1>
 
-  <FilterUser on:filter={filter} />
+  <div class="flex justify-between mx-4 items-center">
+    <FilterUser on:filter={filter} />
+
+    <NewUser />
+  </div>
 
   {#each filteredUsers as user, i (user.id)}
-    <User {user} {i} />
+    <User on:remove={remove} {user} {i} />
   {:else}
     <p>No User Found!</p>
   {/each}
