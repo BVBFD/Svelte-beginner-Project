@@ -1,6 +1,8 @@
 <script>
-  import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher, onMount, onDestroy } from 'svelte';
   const dispatch = createEventDispatcher();
+
+  // export let show;
 
   function close() {
     dispatch('close');
@@ -9,8 +11,22 @@
   function onSubmit() {
     dispatch('submit');
   }
+
+  const myInterval = setInterval(() => {
+    console.log('interval');
+  }, 1000);
+
+  onMount(() => {
+    console.log('Mounted!');
+  });
+
+  onDestroy(() => {
+    console.log('Destroyed!');
+    clearInterval(myInterval);
+  });
 </script>
 
+<!-- style:display={show ? 'block' : 'none'} -->
 <div
   class="relative z-10"
   aria-labelledby="modal-title"
