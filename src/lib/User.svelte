@@ -24,7 +24,11 @@
     text-center hover:bg-red-700">X</button
   >
   <p class="w-10">{i + 1}</p>
-  <img class="rounded-full w-14 h-14" src={user.image} alt={user.name} />
+  <img
+    class="object-cover rounded-full w-14 h-14"
+    src={user.image}
+    alt={user.name}
+  />
   <p class="mx-4 w-20">{user.name}</p>
   <p class="mx-4 2-20">{user.email}</p>
 </div>
