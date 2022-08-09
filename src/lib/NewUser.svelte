@@ -10,6 +10,12 @@
   $: disableSubmitButton = !newUser.name || !newUser.email;
 
   const handleForm = () => {
+    if (newUser.active === 'true') {
+      newUser.active = true;
+    }
+    if (newUser.active === 'false') {
+      newUser.active = false;
+    }
     dispatch('newUser', newUser);
     showModal = false;
   };
@@ -59,7 +65,7 @@
           <label for="true">Yes</label>
           <input
             type="radio"
-            value={true}
+            value="true"
             id="true"
             name="active"
             class="px-2 py-1 mx-2"
@@ -68,7 +74,7 @@
           <label for="false">No</label>
           <input
             type="radio"
-            value={false}
+            value="false"
             id="false"
             name="active"
             class="px-2 py-1 mx-2"

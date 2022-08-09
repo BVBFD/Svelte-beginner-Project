@@ -3,6 +3,12 @@
   import { Router, Route, Link } from 'svelte-navigator';
   import HomePage from './page/HomePage.svelte';
   import UserPage from './page/UserPage.svelte';
+  import { users } from './store';
+  import { afterUpdate } from 'svelte';
+
+  afterUpdate(() => {
+    console.log($users);
+  });
 </script>
 
 <Router>
