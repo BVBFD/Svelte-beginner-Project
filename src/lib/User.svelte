@@ -1,5 +1,6 @@
 <script>
   import { createEventDispatcher } from 'svelte';
+  import { fade, slide, fly } from 'svelte/transition';
 
   export let user;
   export let i;
@@ -7,12 +8,16 @@
   const dispatch = createEventDispatcher();
 
   const remove = () => {
-    alert('removing');
+    // alert('removing');
     dispatch('remove', user.id);
   };
 </script>
 
 <div
+  transition:fly={{
+    duration: 1000,
+    x: 200,
+  }}
   class="flex m-5 bg-white border p-2 rounded-lg 
   shadow-md hover:shadow-lg cursor-pointer 
   items-center relative"

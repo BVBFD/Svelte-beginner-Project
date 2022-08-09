@@ -1,7 +1,6 @@
 <script>
   import { createEventDispatcher, onMount, onDestroy } from 'svelte';
   const dispatch = createEventDispatcher();
-
   // export let show;
 
   function close() {
